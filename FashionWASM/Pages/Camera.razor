@@ -35,15 +35,6 @@
         });
     }
 
-    protected override async Task OnInitializedAsync()
-    {
-        var req = await Client.GetAsync("https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/H%40BackForward.jpg/120px-H%40BackForward.jpg");
-        var body = req.Content.ReadAsByteArrayAsync();
-        var imgBytes = Convert.ToBase64String(await req.Content.ReadAsByteArrayAsync());
-        var json = JsonSerializer.Serialize(new Dictionary<string, string> { { "data", imgBytes } });
-        await Client.PostAsync("https://localhost:44330/api/prediction", new StringContent(json, Encoding.UTF8, "application/json"));
-    }
-
     // Take a picture
     private async Task Snap()
     {
@@ -78,5 +69,14 @@
     {
         [JsonPropertyName("prediction")]
         public string Prediction { get; set; }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var req = await Client.GetAsync("https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/H%40BackForward.jpg/120px-H%40BackForward.jpg");
+        var body = req.Content.ReadAsByteArrayAsync();
+        var imgBytes = Convert.ToBase64String(await req.Content.ReadAsByteArrayAsync());
+        var json = JsonSerializer.Serialize(new Dictionary<string, string> { { "data", imgBytes } });
+        await Client.PostAsync("https://localhost:44330/api/prediction", new StringContent(json, Encoding.UTF8, "application/json"));
     }
 }
