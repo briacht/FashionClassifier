@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FashionClassifier", "Fashio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FashionClassifierML.Model", "FashionClassifierML.Model\FashionClassifierML.Model.csproj", "{E8ECA5B7-38B1-4C48-BE7A-CCBE4AF0AECF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FashionClassifierML.ConsoleApp", "FashionClassifierML.ConsoleApp\FashionClassifierML.ConsoleApp.csproj", "{4DBA4854-501E-4AE2-BF60-5698AED9C134}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FashionWASM", "FashionWASM\FashionWASM.csproj", "{499C9734-5F9D-4933-840C-A5427CE22873}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FashionAPI", "FashionAPI\FashionAPI.csproj", "{5EF7C65D-E09B-4046-92C7-29E041D82D49}"
@@ -27,10 +25,6 @@ Global
 		{E8ECA5B7-38B1-4C48-BE7A-CCBE4AF0AECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8ECA5B7-38B1-4C48-BE7A-CCBE4AF0AECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8ECA5B7-38B1-4C48-BE7A-CCBE4AF0AECF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4DBA4854-501E-4AE2-BF60-5698AED9C134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4DBA4854-501E-4AE2-BF60-5698AED9C134}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4DBA4854-501E-4AE2-BF60-5698AED9C134}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4DBA4854-501E-4AE2-BF60-5698AED9C134}.Release|Any CPU.Build.0 = Release|Any CPU
 		{499C9734-5F9D-4933-840C-A5427CE22873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{499C9734-5F9D-4933-840C-A5427CE22873}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{499C9734-5F9D-4933-840C-A5427CE22873}.Release|Any CPU.ActiveCfg = Release|Any CPU
