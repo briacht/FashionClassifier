@@ -9,7 +9,6 @@
         </div>
         <div class="col-sm">
             <button @onclick="Snap">Capture</button>
-            <button @onclick="DeleteLetter">Delete</button>
         </div>
     </div>
     <div class="row" style="margin-top:10px">
@@ -31,9 +30,18 @@
     private async Task StartCamera()
     {
         await JsRuntime.InvokeVoidAsync("Initialize", new Dictionary<string, string>
-        {
+    {
                 {"video", "video"}
         });
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var req = await Client.GetAsync("https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/H%40BackForward.jpg/120px-H%40BackForward.jpg");
+        var body = req.Content.ReadAsByteArrayAsync();
+        var imgBytes = Convert.ToBase64String(await req.Content.ReadAsByteArrayAsync());
+        var json = JsonSerializer.Serialize(new Dictionary<string, string> { { "data", imgBytes } });
+        await Client.PostAsync("https://localhost:44330/api/prediction", new StringContent(json, Encoding.UTF8, "application/json"));
     }
 
     // Take a picture
@@ -51,29 +59,19 @@
 
         AddLetter(body.Prediction);
 
-        Console.WriteLine(capturedText.Count);
-
-        foreach(var el in capturedText)
+        if(capturedText.Last() == "Topwear")
         {
-            Console.WriteLine(el);
+            DisplayText = $"Item: Shirt";
         }
-
-        DisplayText = $"Text: {string.Join("",capturedText)}";
+        else
+        {
+            DisplayText = $"Item: {capturedText.Last()}";
+        }
     }
 
     private void AddLetter(string letter)
     {
         capturedText.Add(letter);
-    }
-
-    private void DeleteLetter()
-    {
-        if(capturedText.Count > 0)
-        {
-            capturedText.RemoveAt(capturedText.Count - 1);
-            DisplayText = $"Text: {string.Join("", capturedText)}";
-        }
-
     }
 
     class PredictionResponse
